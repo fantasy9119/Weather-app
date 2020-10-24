@@ -2,16 +2,30 @@ const request = require('postman-request')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+const address = process.argv[2]
+
+if (!address) {
+    console.log('Please provide an address')
+} else {
+    geocode(address, (error, data) => {
+        if (error){
+           return console.log(error)
+        }
+        
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
+            if (error) {
+                console.log('Error', error)
+            }
+            
+            console.log(data.location)
+            console.log(forecastData)
+          })
+    
+    })
+    
+}
 
 
-geocode('Santiago peñalolen la hijuela poniente 4196', (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-})
 
 
 
-forecast(-33.497919, -70.576784, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-  })
