@@ -1,5 +1,6 @@
 const request = require('postman-request')
 const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
 const url = 'http://api.weatherstack.com/current?access_key=98260dd65c168d580fa241ee00d0e75e&query=-33.4985,-70.5756'
 
@@ -34,7 +35,7 @@ const url = 'http://api.weatherstack.com/current?access_key=98260dd65c168d580fa2
 //    - Coordinate error, pass string for error
 //    - Success, pass forecast string for data (same format as from before)
 
-forecast(-75.7088, 44.1545, (error, data) => {
+forecast(-33.497919, -70.576784, (error, data) => {
     console.log('Error', error)
     console.log('Data', data)
   })
