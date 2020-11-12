@@ -38,7 +38,7 @@ app.get('/about', (req,res) => {
 app.get('/help', (req,res) => {
     res.render('help',{
         helpText: 'Some helpful text',
-        title: 'Help me',
+        title: 'Help',
         name: 'Fabian'
     })
 })
@@ -50,8 +50,17 @@ app.get('/weather', (req,res) => {
     })
 })
 
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        error: 'Help article not found.'
+    })
+})
+
 app.get('*', (req, res) =>{
-    res.send('My 404 page')
+    res.render('404', {
+        error: 'Page not found',
+        name: 'Fabian'
+    })
 })
 
 
